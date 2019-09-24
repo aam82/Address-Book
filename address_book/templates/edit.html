@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h1>Edit Address</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <br/>
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+               value="{{ get_address.name }}" name="name">
+    </div>
+
+    <div class="form-group">
+        <input type="email" class="form-control" id="exampleInput1" aria-describedby="emailHelp"
+               value="{{ get_address.email }}" name="email">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInput2" aria-describedby="emailHelp"
+               value="{{ get_address.phone }}" name="phone">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInput3" aria-describedby="emailHelp"
+               value="{{ get_address.address }}" name="address">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInput4" aria-describedby="emailHelp"
+               value="{{ get_address.city }}" name="city">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInput5" aria-describedby="emailHelp"
+               value="{{ get_address.state }}" name="state">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="exampleInput6" aria-describedby="emailHelp"
+               value="{{ get_address.zipcode }}" name="zipcode">
+    </div>
+    <div class="form-group">
+        <input type="hidden" value="{{ get_address.id }}" name="id">
+    </div>
+    </br>
+    <button type="submit" class="btn btn-secondary">Edit Address</button>
+</form>
+<br/>
+<br/>
+<form method="POST" action="{% url 'delete' get_address.id %}">
+    {% csrf_token %}
+    <input type="hidden" value="{{ get_address.id }}" name="id">
+    <button type="submit" class="btn btn-secondary">Delete Address</button>
+</form>
+
+{% endblock %}
